@@ -1,14 +1,17 @@
+google drive link:
+https://docs.google.com/document/d/1sqf6fwTnDl9nIOCqVmjCzox7kAiT_Ksv/edit?usp=sharing&ouid=117522354233069458807&rtpof=true&sd=true
 
 barbiebungee = data.frame(bands = c(1,2,3,4,5,6,7,8,12), distance = c(15.5, 19.5, 26, 32.67, 36.67, 43, 48, 54, 73))
 library(ggplot2)
 
-fit = lm(bands~distance, data = barbiebungee)
+fit = lm(distance~bands, data = barbiebungee)
 lm(distance~bands, data = barbiebungee)
 barbiebungee %>% ggplot(aes(x = distance, y = bands)) + geom_point()+ geom_smooth(method = "lm")+ ggtitle("Barbie Bungie: rubber bands v. distance")
 confint(fit)
 
 fit = lm(distance~bands, data = barbiebungee)
 summary(fit)
+
 
 #note that here beta_0_hat and beta_1_hat are beta_0 and beta_1
 fit$coefficients
@@ -18,3 +21,6 @@ fit$coefficients[1]
 #beta_1_hat
 fit$coefficients[2]
 #shows the slope
+
+summary(fit)
+confint(fit)
