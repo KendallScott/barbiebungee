@@ -1,0 +1,4 @@
+barbiebungee = data.frame(bands = c(1,2,3,4,5,6,7,8), distance = c(15.5, 19.5, 26, 32.67, 36.67, 43, 48, 54))
+library(ggplot2)
+ggplot(aes(y = bonds, x = distance, fill = bonds))
+barbiebungee %>% ggplot(aes(x = bands, y = distance)) + geom_point()
