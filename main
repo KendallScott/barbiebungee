@@ -1,6 +1,20 @@
+
 barbiebungee = data.frame(bands = c(1,2,3,4,5,6,7,8), distance = c(15.5, 19.5, 26, 32.67, 36.67, 43, 48, 54))
 library(ggplot2)
-#plot and regression line
-fit = lm(bands~distance, data = barbiebungee)
-barbiebungee %>% ggplot(aes(x = bands, y = distance)) + geom_point()+ geom_smooth(method = "lm")+ ggtitle("Barbie Bungie: rubber bands v. distance")
 
+fit = lm(bands~distance, data = barbiebungee)
+lm(distance~bands, data = barbiebungee)
+barbiebungee %>% ggplot(aes(x = distance, y = bands)) + geom_point()+ geom_smooth(method = "lm")+ ggtitle("Barbie Bungie: rubber bands v. distance")
+confint(fit)
+
+fit = lm(distance~bands, data = barbiebungee)
+summary(fit)
+
+#note that here beta_0_hat and beta_1_hat are beta_0 and beta_1
+fit$coefficients
+#beta_0_hat
+fit$coefficients[1]
+#shows the intercept
+#beta_1_hat
+fit$coefficients[2]
+#shows the slope
