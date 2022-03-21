@@ -1,0 +1,57 @@
+---
+title: "bungee"
+author: "Milan"
+date: "3/19/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+library(magrittr)
+library(maps)
+library(dplyr)
+library(rvest)
+library(xml2)
+library(scico)
+library(caret)
+library(e1071)
+library(class)
+library(robotstxt)
+library(naivebayes)
+library(psych)
+library(Metrics)
+library(earth)
+library(corrplot)
+library(GGally)
+library(readxl)
+```
+
+## R Markdown
+```{r}
+barbiebungee = data.frame(bands = c(1,2,3,4,5,6,7,8,12), distance = c(15.5, 19.5, 26, 32.67, 36.67, 43, 48, 54, 73))
+```
+
+```{r}
+barbielm <- lm(distance~bands, data = barbiebungee)
+summary(barbielm)
+
+confint(barbielm)
+
+b0 = barbielm$coefficients[0]
+b1 = barbielm$coefficients[1]
+
+```
+
+```{r}
+prediction <- data.frame(bands = c(47,44,42,40), distance = NA)
+predval <- predict(barbielm, newdata = prediction, interval = "confidence")
+
+predval
+```
+
+
